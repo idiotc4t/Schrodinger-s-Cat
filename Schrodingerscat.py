@@ -50,7 +50,7 @@ if __name__ == '__main__':
     print("[+] Compiling temporary source code ./temp/temp.cpp")
 
     if args.platform == 'x64':
-        os.system("i686-w64-mingw32-gcc -mwindows ./temp/temp.cpp -o %s -static -%s" % (args.output ,args.options))
+        os.system("i686-w64-mingw32-gcc -mwindows ./temp/temp.cpp -o ./temp/%s -static -%s" % (args.output ,args.options))
     else:
         os.system("i686-w64-mingw32-gcc -mwindows -lws2_32 ./temp/temp.cpp -o ./temp/%s -static -%s" % (args.output , args.options))
     print("[+] Compiled and output the file %s" % args.output)
