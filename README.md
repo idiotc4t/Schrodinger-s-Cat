@@ -1,2 +1,2 @@
 # Schrodinger-s-Cat
-Shellcode antivirus evasion framework
+Schrodinger'sCat is a Shellcode antivirus evasion framework
