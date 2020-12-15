@@ -36,8 +36,6 @@ int main()
 
         if (msg.message != WM_USER+2 || msg.wParam != 23 || msg.lParam != 42)
                 return 0;
-
-        /* check timing of A/V sandbox... */
         tc = GetTickCount();
         Sleep(650);
 
