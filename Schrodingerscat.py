@@ -38,8 +38,6 @@ if __name__ == '__main__':
         parser.print_help()
         sys.exit()
 
-
-
     print("[+] Generate temporary source code")
     c_code = generator(args.template, args.file, args.section,args.alloc, args.output)
     print("[+] Write temp source file ./temp/temp.cpp")
