@@ -3,6 +3,19 @@ import sys
 from core.core import *
 from core.lib import *
 
+logo = '''
+
+  ____       _                   _ _                       _        ____      _   
+ / ___|  ___| |__  _ __ ___   __| (_)_ __   __ _  ___ _ __( )___   / ___|__ _| |_ 
+ \___ \ / __| '_ \| '__/ _ \ / _` | | '_ \ / _` |/ _ \ '__|// __| | |   / _` | __|
+  ___) | (__| | | | | | (_) | (_| | | | | | (_| |  __/ |    \__ \ | |__| (_| | |_ 
+ |____/ \___|_| |_|_|  \___/ \__,_|_|_| |_|\__, |\___|_|    |___/  \____\__,_|\__|
+                                           |___/         
+           Schrodinger'sCat is a Shellcode antivirus evasion framework 
+                                v1.0 stable!
+                        author idiotc4t@xxSec Lab!                         
+'''
+print(logo)
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
