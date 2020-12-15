@@ -5,9 +5,7 @@ import core.alloc
 alloc_choices =[]
 template_choices =[]
 
-def check_compiler(tool_name):
-    from distutils.spawn import find_executable
-    return find_executable(tool_name) is not None
+
 
 for i in dir(core.alloc):
     if 'alloc_' in str(i):
@@ -17,6 +15,16 @@ filelist = os.listdir("templates")
 for filename in filelist:
     if 'tpl_' in filename:
         template_choices.append(filename.replace('.py',''))
+
+def check_template(template_name):
+    return template_name in template_choices;
+
+def check_alloc(alloc_name):
+    return alloc_name in alloc_choices;
+
+def check_compiler(tool_name):
+    from distutils.spawn import find_executable
+    return find_executable(tool_name) is not None
 
 
 def load_file(file_path):

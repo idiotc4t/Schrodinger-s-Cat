@@ -6,14 +6,14 @@ from core.lib import *
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('-t','--template', type=str, choices=template_choices,default="tpl_test", help='PE file modification mode Default:tpl_test')
-    parser.add_argument('-f', '--file' ,type=str, default="", help='Input shellcode file to be processed')
+    parser.add_argument('-t','--template', type=str, choices=template_choices,default="tpl_earlybird", help='PE file modification mode Default:tpl_test')
+    parser.add_argument('-f', '--file' ,type=str, default="data.db", help='Input shellcode file to be processed')
     parser.add_argument('-s', '--section', type=str, default=".text", help='Shellcode offsets the segment stored in the table Default:.text')
     parser.add_argument('-a', '--alloc', type=str, choices=alloc_choices,default="alloc_virtualalloc",help='Application method of memory Default:alloc_virtualalloc')
     parser.add_argument('-o', '--output', type=str, default="output.exe", help='Output file name Default:output.exe')
     parser.add_argument('-p', '--platform', type=str, choices=['x86','x64'],default="x86", help='Compiling platform Default:x86')
     parser.add_argument('-l', '--list', type=str,default="",choices=['alloc','template'], help='list template or alloc')
-    parser.add_argument('-opt', '--options', type=str,default="-O3", help='GCC compilation options Default:-O3')
+    parser.add_argument('-opt', '--options', type=str,default="O3", help='GCC compilation options Default:O3')
 
     args = parser.parse_args()
     if args.list != "":
@@ -21,6 +21,17 @@ if __name__ == '__main__':
         sys.exit();
 
     if args.file == "":
+        print("[-] Not found this file")
+        parser.print_help()
+        sys.exit()
+
+    if check_alloc(args.alloc) == False:
+        print("[-] Not found this alloc mode")
+        parser.print_help()
+        sys.exit()
+
+    if check_template(args.template) == False:
+        print("[-] Not found this template")
         parser.print_help()
         sys.exit()
 
@@ -28,14 +39,15 @@ if __name__ == '__main__':
     c_code = generator(args.template, args.file, args.section,args.alloc, args.output)
     print("[+] Write temp source file ./temp/temp.cpp")
     write_file(c_code,'temp/temp.cpp')
-    print("[+] Compiling temporary source code ./temp/temp.cpp")
 
-    if check_compiler('i686-w64-mingw32-gcc'):
+    if check_compiler('i686-w64-mingw32-gcc')== False:
         print('[-] No cross-compiler detected. Try: apt-get install mingw-w64')
         sys.exit()
 
+    print("[+] Compiling temporary source code ./temp/temp.cpp")
+
     if args.platform == 'x64':
-        os.system("i686-w64-mingw32-gcc -mwindows ./temp/temp.cpp -o %s -static %s" % (args.output ,args.options))
+        os.system("i686-w64-mingw32-gcc -mwindows ./temp/temp.cpp -o %s -static -%s" % (args.output ,args.options))
     else:
-        os.system("i686-w64-mingw32-gcc -mwindows -lws2_32 ./temp/temp.cpp -o ./temp/%s -static %s" % (args.output , args.options))
+        os.system("i686-w64-mingw32-gcc -mwindows -lws2_32 ./temp/temp.cpp -o ./temp/%s -static -%s" % (args.output , args.options))
     print("[+] Compiled and output the file %s" % args.output)
