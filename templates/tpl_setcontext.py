@@ -35,7 +35,6 @@ int main(){
 	SuspendThread(pi.hThread);
 	LPVOID Buffer = VirtualAllocEx(pi.hProcess, NULL, sizeof(offset_table), MEM_COMMIT, PAGE_EXECUTE_READWRITE);
 	WriteProcessMemory(pi.hProcess, Buffer, lpBuffer, sizeof(offset_table), NULL);
-
 	CONTEXT ctx = { 0 };
 	ctx.ContextFlags = CONTEXT_ALL;
 	GetThreadContext(pi.hThread, &ctx);
