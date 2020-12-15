@@ -5,6 +5,9 @@ import core.alloc
 alloc_choices =[]
 template_choices =[]
 
+def check_compiler(tool_name):
+    from distutils.spawn import find_executable
+    return find_executable(tool_name) is not None
 
 for i in dir(core.alloc):
     if 'alloc_' in str(i):

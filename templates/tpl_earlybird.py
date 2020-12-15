@@ -1,3 +1,4 @@
+print("Technical principle: https://idiotc4t.com/code-and-dll-process-injection/early-bird")
 def get():
     c_code = '''
 #include <stdio.h>
@@ -64,3 +65,4 @@ int main()
 }
     '''
     return c_code
+
