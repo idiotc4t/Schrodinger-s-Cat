@@ -38,15 +38,7 @@ if __name__ == '__main__':
         parser.print_help()
         sys.exit()
 
-    if check_alloc(args.alloc) == False:
-        print("[-] Not found this alloc mode")
-        parser.print_help()
-        sys.exit()
 
-    if check_template(args.template) == False:
-        print("[-] Not found this template")
-        parser.print_help()
-        sys.exit()
 
     print("[+] Generate temporary source code")
     c_code = generator(args.template, args.file, args.section,args.alloc, args.output)
