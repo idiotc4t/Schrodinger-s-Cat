@@ -7,7 +7,6 @@ char shellcode[]="";
 typedef VOID(NTAPI* pNtTestAlert)(VOID);
 <TABLES>
 int main() {
-
 	PCHAR lpBuffer = <ALLOC>
 
 	for (int i = 0; i < sizeof(offset_table)/sizeof(DWORD); i++)
