@@ -39,9 +39,9 @@ int main(){
 	ctx.ContextFlags = CONTEXT_ALL;
 	GetThreadContext(pi.hThread, &ctx);
 #ifndef WIN32
-    ctx.Eip = (LONG_PTR)Buffer;
-#else
-    ctx.Rip = (LONG_PTR)Buffer;
+    ctx.Eip = (DWORD32)Buffer;
+#elif WIN64
+    ctx.Rip = (DWORD64)Buffer;
 #endif
 	SetThreadContext(pi.hThread, &ctx);
 	ResumeThread(pi.hThread);
