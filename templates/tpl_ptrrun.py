@@ -28,7 +28,7 @@ int main(){
 	}
 	
     VirtualProtect(lpBuffer, sizeof(offset_table), PAGE_EXECUTE_READ, NULL);
-    ((void(*)(void))&lpBuffer)();
+    ((void(*)(void))lpBuffer)();
 }    
     
 '''
