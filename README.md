@@ -3,7 +3,7 @@ Schrodinger'sCat is a Shellcode antivirus evasion framework
 
 ## Technical principle
 Please visit my blog
-https://idiotc4t.com/defense-evasion/reflectivedllinjection-variation
+https://idiotc4t.com/
 ## How to usa
 ```bash 
 └─$ python3 Schrodingerscat.py -h
