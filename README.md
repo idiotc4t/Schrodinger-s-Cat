@@ -17,7 +17,7 @@ https://idiotc4t.com/
  |____/ \___|_| |_|_|  \___/ \__,_|_|_| |_|\__, |\___|_|    |___/  \____\__,_|\__|
                                            |___/         
            Schrodinger'sCat is a Shellcode antivirus evasion framework 
-                                v1.0 stable!
+                                v1.1 stable!
                         author idiotc4t@xxSec Lab!                         
 
 [+] Generate temporary source code
@@ -36,7 +36,7 @@ https://idiotc4t.com/
  |____/ \___|_| |_|_|  \___/ \__,_|_|_| |_|\__, |\___|_|    |___/  \____\__,_|\__|
                                            |___/         
            Schrodinger'sCat is a Shellcode antivirus evasion framework 
-                                v1.0 stable!
+                                v1.1 stable!
                         author idiotc4t@xxSec Lab!                         
 
 usage: Schrodingerscat.py [-h] [-t {tpl_nttestalert,tpl_earlybird,tpl_setcontext,tpl_ptrrun,tpl_createremotethread}] [-f FILE] [-s SECTION]
