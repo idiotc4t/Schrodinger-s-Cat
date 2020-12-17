@@ -53,4 +53,4 @@ if __name__ == '__main__':
         os.system("x86_64-w64-mingw32-gcc -mwindows ./temp/temp.cpp -o ./temp/%s -static -%s" % (args.output ,args.options))
     else:
         os.system("i686-w64-mingw32-gcc -mwindows -lws2_32 ./temp/temp.cpp -o ./temp/%s -static -%s" % (args.output , args.options))
-    print("[+] Compiled and output the file %s" % args.output)
+    print("[+] Compiled and output the file ./temp/%s" % args.output)
