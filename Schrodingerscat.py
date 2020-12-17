@@ -12,7 +12,7 @@ logo = '''
  |____/ \___|_| |_|_|  \___/ \__,_|_|_| |_|\__, |\___|_|    |___/  \____\__,_|\__|
                                            |___/         
            Schrodinger'sCat is a Shellcode antivirus evasion framework 
-                                v1.0 stable!
+                                v1.1 stable!
                         author idiotc4t@xxSec Lab!                         
 '''
 print(logo)
