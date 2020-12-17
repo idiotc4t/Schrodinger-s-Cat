@@ -37,12 +37,12 @@ if __name__ == '__main__':
         print("[-] Not found this file")
         parser.print_help()
         sys.exit()
-
-    print("[+] Generate temporary source code")
+    if os.path.exists('./temp') == False:
+        os.mkdir('./temp')
     c_code = generator(args.template, args.file, args.section,args.alloc, args.output)
-    print("[+] Write temp source file ./temp/temp.cpp")
+    print("[+] Generate temporary source code")
     write_file(c_code,'temp/temp.cpp')
-
+    print("[+] Write temp source file ./temp/temp.cpp")
     if check_compiler('i686-w64-mingw32-gcc')== False:
         print('[-] No cross-compiler detected. Try: apt-get install mingw-w64')
         sys.exit()
