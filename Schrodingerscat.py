@@ -20,7 +20,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-t','--template', type=str, choices=template_choices,default="tpl_earlybird", help='PE file modification mode Default:tpl_test')
-    parser.add_argument('-f', '--file' ,type=str, default="data.db", help='Input shellcode file to be processed')
+    parser.add_argument('-f', '--file' ,type=str, default="", help='Input shellcode file to be processed')
     parser.add_argument('-s', '--section', type=str, default=".text", help='Shellcode offsets the segment stored in the table Default:.text')
     parser.add_argument('-a', '--alloc', type=str, choices=alloc_choices,default="alloc_virtualalloc",help='Application method of memory Default:alloc_virtualalloc')
     parser.add_argument('-o', '--output', type=str, default="output.exe", help='Output file name Default:output.exe')
