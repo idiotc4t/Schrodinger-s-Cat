@@ -9,7 +9,7 @@ def generator(template="",shellcode_path="",seciton="",alloc="",output=""):
 
     module =__import__('templates.'+template)
 
-    c_code = eval('module.'+template+'.get()')
+    c_code = eval('module.'+template+'.template.get()')
 
     alloc_code = eval(alloc+"()")
     c_code = c_code.replace("<TABLES>",tables_code)

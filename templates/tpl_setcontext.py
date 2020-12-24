@@ -1,6 +1,9 @@
 ###"Technical principle: https://idiotc4t.com/code-and-dll-process-injection/setcontext-hijack-thread"
-def get():
-    c_code = '''
+from templates.template import *
+class template(ITemplate):
+    @staticmethod
+    def get():
+        c_code = '''
 #include<windows.h>
 #include<stdio.h>
 
@@ -48,5 +51,5 @@ int main(){
 	return 0;
 }    
 '''
-    return c_code
+        return c_code
 
