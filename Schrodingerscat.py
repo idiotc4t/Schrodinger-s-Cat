@@ -13,7 +13,7 @@ logo = '''
                                            |___/         
            Schrodinger'sCat is a Shellcode antivirus evasion framework 
                                 v1.1 stable!
-                        author idiotc4t@xxSec Lab!                         
+                        author idiotc4t@QuasarSec Lab!                         
 '''
 print(logo)
 if __name__ == '__main__':
