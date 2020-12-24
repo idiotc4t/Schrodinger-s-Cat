@@ -48,7 +48,7 @@ if __name__ == '__main__':
         print("[-] Generate temporary source code failed")
         sys.exit()
 
-    write_file(c_code,'temp/temp.cpp')
+    write_file(c_code,'output/temp.cpp')
     print("[+] Write temp source file ./output/temp.cpp")
     if check_compiler('i686-w64-mingw32-gcc')== False:
         print('[-] No cross-compiler detected. Try: apt-get install mingw-w64')
