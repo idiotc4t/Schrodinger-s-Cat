@@ -38,8 +38,8 @@ if __name__ == '__main__':
         parser.print_help()
         sys.exit()
 
-    if os.path.exists('./temp') == False:
-        os.mkdir('./temp')
+    if os.path.exists('./output') == False:
+        os.mkdir('./output')
 
     c_code = generator(args.template, args.file, args.section,args.alloc, args.output)
     if c_code != "":
@@ -49,16 +49,16 @@ if __name__ == '__main__':
         sys.exit()
 
     write_file(c_code,'temp/temp.cpp')
-    print("[+] Write temp source file ./temp/temp.cpp")
+    print("[+] Write temp source file ./output/temp.cpp")
     if check_compiler('i686-w64-mingw32-gcc')== False:
         print('[-] No cross-compiler detected. Try: apt-get install mingw-w64')
         sys.exit()
 
-    print("[+] Compiling temporary source code ./temp/temp.cpp")
+    print("[+] Compiling temporary source code ./output/temp.cpp")
 
     if args.platform == 'x64':
-        os.system("x86_64-w64-mingw32-gcc -mwindows ./temp/temp.cpp -o ./temp/%s -static -%s" % (args.output ,args.options))
+        os.system("x86_64-w64-mingw32-gcc -mwindows ./output/temp.cpp -o ./output/%s -static -%s" % (args.output ,args.options))
         print("[+] Compiled and output the file ./temp/%s" % args.output)
     else:
-        os.system("i686-w64-mingw32-gcc -mwindows -lws2_32 ./temp/temp.cpp -o ./temp/%s -static -%s" % (args.output , args.options))
-        print("[+] Compiled and output the file ./temp/%s" % args.output)
+        os.system("i686-w64-mingw32-gcc -mwindows -lws2_32 ./output/temp.cpp -o ./output/%s -static -%s" % (args.output , args.options))
+        print("[+] Compiled and output the file ./output/%s" % args.output)
