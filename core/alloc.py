@@ -9,3 +9,6 @@ def alloc_calloc():
 
 def alloc_maping():
     return "(PCHAR)MapViewOfFile(CreateFileMapping(INVALID_HANDLE_VALUE, NULL, PAGE_EXECUTE_READWRITE, 0, sizeof(offset_table), NULL), FILE_MAP_WRITE, 0, 0, sizeof(offset_table));"
+
+def alloc_heap():
+    return " (PCHAR)HeapAlloc(HeapCreate(HEAP_CREATE_ENABLE_EXECUTE | HEAP_ZERO_MEMORY, 0, 0), 0, sizeof(offset_table));"
