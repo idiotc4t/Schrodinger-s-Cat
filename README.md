@@ -62,5 +62,6 @@ optional arguments:
                         GCC compilation options. Default:O3
 ```
 ## TODO
-Add more templates
-[*]
+[]Add more templates
+
+[]Modularization of encryption
