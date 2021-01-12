@@ -21,6 +21,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-t','--template', type=str, choices=template_choices,default="tpl_earlybird", help='C language source code template. Default:tpl_earlybird')
     parser.add_argument('-f', '--file' ,type=str, default="", help='Input shellcode file to be processed.')
+    parser.add_argument('-e', '--encrypt', type=str, default="offset", help='Shellcode encryption method.')
     parser.add_argument('-s', '--section', type=str, default=".text", help='The offset table is compiled into the named code segment Default:.text')
     parser.add_argument('-a', '--alloc', type=str, choices=alloc_choices,default="alloc_virtualalloc",help='Restore shellcode temporary storage allocation. Default:alloc_virtualalloc')
     parser.add_argument('-o', '--output', type=str, default="output.exe", help='Output file name. Default:output.exe')
@@ -41,7 +42,7 @@ if __name__ == '__main__':
     if os.path.exists('./output') == False:
         os.mkdir('./output')
 
-    c_code = generator(args.template, args.file, args.section,args.alloc, args.output)
+    c_code = generator(args.template, args.file, args.section,args.alloc,args.encrypt, args.output)
     if c_code != "":
         print("[+] Generate temporary source code")
     else:
@@ -57,8 +58,8 @@ if __name__ == '__main__':
     print("[+] Compiling temporary source code ./output/temp.cpp")
 
     if args.platform == 'x64':
-        os.system("x86_64-w64-mingw32-gcc -mwindows ./output/temp.cpp -o ./output/%s -static -%s" % (args.output ,args.options))
+        os.system("./llvm-mingw/bin/x86_64-w64-mingw32-gcc -mwindows ./output/temp.cpp -o ./output/%s -static -%s" % (args.output ,args.options))
         print("[+] Compiled and output the file ./temp/%s" % args.output)
     else:
-        os.system("i686-w64-mingw32-gcc -mwindows -lws2_32 ./output/temp.cpp -o ./output/%s -static -%s" % (args.output , args.options))
+        os.system("./llvm-mingw/bin/i686-w64-mingw32-gcc -mwindows -lws2_32 ./output/temp.cpp -o ./output/%s -static -%s" % (args.output , args.options))
         print("[+] Compiled and output the file ./output/%s" % args.output)
