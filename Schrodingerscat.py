@@ -58,8 +58,8 @@ if __name__ == '__main__':
     print("[+] Compiling temporary source code ./output/temp.cpp")
 
     if args.platform == 'x64':
-        os.system("./llvm-mingw/bin/x86_64-w64-mingw32-gcc -mwindows ./output/temp.cpp -o ./output/%s -static -%s" % (args.output ,args.options))
+        os.system("x86_64-w64-mingw32-gcc -mwindows ./output/temp.cpp -o ./output/%s -static -%s" % (args.output ,args.options))
         print("[+] Compiled and output the file ./temp/%s" % args.output)
     else:
-        os.system("./llvm-mingw/bin/i686-w64-mingw32-gcc -mwindows -lws2_32 ./output/temp.cpp -o ./output/%s -static -%s" % (args.output , args.options))
+        os.system("i686-w64-mingw32-gcc -mwindows -lws2_32 ./output/temp.cpp -o ./output/%s -static -%s" % (args.output , args.options))
         print("[+] Compiled and output the file ./output/%s" % args.output)
